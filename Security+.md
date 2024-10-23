@@ -193,3 +193,25 @@ disk wiping tools:
 
 # Cryptography
 
+### Basics
+
+* Cryptograpy: take data and make it confidential
+* Obfuscation: Take something that makes sense and hide it to make it not make sense
+* Encryption / decryption: obfuscating something, and then being able to return it back to its original
+
+Classic cryptography components
+* algorithm
+* key for encryption
+
+### Hashing
+
+In charge of the integrity of the data. 
+Hash is a mathematical function to check that the information has not changed between the encryption and the decrpytion, or the transfer of the data. 
+Any piece of text, of whatever value, and whatever size, will be processed by the hash function, and the output will be the same size, and with a different value for each input. a will have an entire different value from b or aa, but the size of the output will be the same. 
+A message digest is a numeric representation of a message computed by a cryptographic hash algorithm or a function.
+If two different inputs have the same message digest, it is considered a collision, which makes the hashing algorithm not acceptable. 
+Commonly used for passwords.
+
+### Cryptographic attacks
+
+### Password cracking
