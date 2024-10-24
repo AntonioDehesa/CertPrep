@@ -193,7 +193,7 @@ disk wiping tools:
 
 # Cryptography
 
-### Basics
+## Basics
 
 * Cryptograpy: take data and make it confidential
 * Obfuscation: Take something that makes sense and hide it to make it not make sense
@@ -203,7 +203,7 @@ Classic cryptography components
 * algorithm
 * key for encryption
 
-### Hashing
+## Hashing
 
 In charge of the integrity of the data. 
 Hash is a mathematical function to check that the information has not changed between the encryption and the decrpytion, or the transfer of the data. 
@@ -212,6 +212,42 @@ A message digest is a numeric representation of a message computed by a cryptogr
 If two different inputs have the same message digest, it is considered a collision, which makes the hashing algorithm not acceptable. 
 Commonly used for passwords.
 
-### Cryptographic attacks
+## Cryptographic attacks
 
-### Password cracking
+Cryptanalysis: breaking cryptography
+Attack the algorithm: attacking an algorithm such as AES would be too complicated. Instead, it can be tried to trick the user into using a weaker algorithm, and then crack the hash of the weaker algorithm.
+Attack the implementation: the hashing algorithm may be strong, but the way it is used may be weak
+
+## Password cracking
+
+* Brute force: trying every possible combination until you get the password.
+* Dictionary attack: uses a Dictionary with a lot of commonly used passwords, or just human sounding words for the brute force attack
+* rainbow table: uses a precomputed table that contains the password hash value for each plain text character used during the authentication process.
+
+* salting: using a random value (which may or may not be secret) that gets appended to the password before hashing, to make pre-hashed tables useless.
+
+# Physical security
+
+Physical security: physical controls to avoid damages to the physical assets, or them being stolen, corrupted, etc. 
+Do not allow unauthorized people plugging in the network.
+* key logger: deivce connected as the middle man between the system and the keyboard to store the typed keys and their order. 
+
+## Personnel
+
+guards
+badges
+visitor logs
+robot sentries
+reception
+
+## facility security
+### Location
+undisclosed address
+protection from natural disasters
+
+signage
+fencing
+bollards / barricades
+industrial camouflage
+motion detection and video surveillance
+
