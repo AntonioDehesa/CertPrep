@@ -251,3 +251,55 @@ bollards / barricades
 industrial camouflage
 motion detection and video surveillance
 
+## Environmental controls
+
+### Server room airflow management
+
+keep incoming cool air separated from outgoing warmer air
+draw in cool air to equiment
+draw hot air from equipment out
+Use containment panels/curtains to keep cool and warm air from mixing
+blanking panels: fill empty rack slots to optimize airflow
+
+sensors such as temperature, pressure, humidity, noise, proximity
+
+# Identity and account management
+
+Identification: Stating your identity
+authentication: confirming your identity 
+authorization: once confirmed, what you have permissions to do 
+accounting: auditing (monitoring of the user)
+
+## Multifactor authentication (MFA)
+Using more than one factor of authentication
+
+### Factors
+* something you know
+* something you have
+* something you are
+
+### Attributes
+
+something you do (signature)
+something you exhibit 
+something you know
+somewhere you are
+
+# Tools of the trade
+
+# Securing individual systems 
+
+# Securing the basic LAN
+
+# Securing Wireless LANs
+
+# Securing Virtal and Cloud Environments
+
+# Securing Dedicated and Mobile systems
+
+# Secure protocols and applications
+
+# Testing infrastructure
+
+# Business Security impact
+
