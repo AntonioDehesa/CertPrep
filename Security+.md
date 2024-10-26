@@ -266,9 +266,9 @@ sensors such as temperature, pressure, humidity, noise, proximity
 # Identity and account management
 
 Identification: Stating your identity
-authentication: confirming your identity 
-authorization: once confirmed, what you have permissions to do 
-accounting: auditing (monitoring of the user)
+authentication: confirming your identity (proving it)
+authorization: once confirmed, what you have permissions to do. determines resources permissions, permissions granted. can only occur after authentication
+accounting: auditing (monitoring of the user, what they access, what they do, failed logon attempts, changes and modifications)
 
 ## Multifactor authentication (MFA)
 Using more than one factor of authentication
@@ -281,11 +281,121 @@ Using more than one factor of authentication
 ### Attributes
 
 something you do (signature)
-something you exhibit 
-something you know
+something you exhibit: personality traits, neurological behaviors, the way you walk, or talk, or behave, etc
+someone you know
 somewhere you are
 
+## Authentication methods
+
+* password vaults or managers. a master key protects all other passwords
+* One-time password: unique password or code generated for a single use. static code sent via e-mail or sms text. valid for a short period
+* Certificate based authentication: PKI certificates are issued by a trusted authority to an individual entity
+* SSH public key authentication: sign in with username and password as well as private key
+* Biometrics: fingerprint, retina, iris, facial, voice, bein, gait analysis
+
+## Access control schemes
+
+### Credential policies
+Defines who gets access to what: employees, comtractors, devices, service accounts, administrator
+
+### Attribute-based access control
+uses attributes to determine permissions.
+date of birth, device type, team
+
+### Role based access control
+
+a role is a collection of related permissions. role occupants get permissions of the role
+
+### Rule based access control
+
+Uses conditional access policies: MFA, device type, location
+
+### Mandatory access control
+
+resources are labeled: devices, files, databases, network ports, etc. 
+permission assignments are based on resource labels and security clearance
+
+### Discreationary access control
+
+data custodian sets permissions at their discretion
+
+## Account management
+
+### User accounts
+
+* unique account per user
+* assign permissions to groups, and individuals to groups 
+* principle of least privilege
+* user account auditing
+* disablement of accounts instead of deletion if a user leaves the organization
+
+### account types
+* user, device, service
+* administrator/root
+* privileged
+* guest
+
+### Account policies
+
+They guide password policies, employee onboarding, account lockout
+* time-based logins: enforce login/logout times 
+* geolocation: where users can be located to access specific resources (geofencing), locates the user, geotagging (adding location metadata to files and social media posts)
+* risky login: anything outside of the normal may be categorized as a risky login.
+
+## Network authentication
+
+* Password authentication protocol: outdated, cleartext transmissions
+* microsoft challenge handshake authentication protocol
+* Microsoft new technology LAN manager
+* Kerberos: microsoft active directory authentication, Kerberos key distribution center, authentication service, ticket granting service, ticket granting ticket 
+
+## Identity management system
+
+### Single sign on 
+user credentials are not requested after initial authentication
+Protocols: OpenID, OAuth
+
+### Identity federation
+
+multiple resources that trust a single authentication source. 
+Centralized trusted identity provider (IdP)
+Security assertion markup language (SAML): token is a digital security token that proves identity
+
 # Tools of the trade
+
+## CLI
+
+* Ping: basic command to test connections
+* ipconfig (windows) / ifconfig (linux/mac): used to check configuration of your network in your device
+* reverse shell: advanced persistent threat (APT). attacker has a way into the system repeatedly. netcat, metasploit, cobalt strike
+
+### Linux Shell
+
+case sensitive
+shell scripts (.sh) must be flagged as executable
+for security, dont sign in with root account
+sudo is for elevated privileges
+remotely accessible: secure shell (SSH) over TCP port 22
+
+### Windows Command Line
+
+cmd.exe
+may need to run with elevated privileges
+batch file scripts: file extension is .bat 
+
+### Windows PowerShell
+
+runs on windows, linux, macos
+object-oriented
+may need to run with elevated privileges
+PowerShell scripts: file extension is .ps1
+uses libraries/modules that dictate available commands
+
+## Network scanners
+
+### Nmap
+
+## Network protocol analyzers
 
 # Securing individual systems 
 
@@ -303,3 +413,4 @@ somewhere you are
 
 # Business Security impact
 
+# Dealing with incidents
