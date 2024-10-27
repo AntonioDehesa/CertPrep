@@ -377,6 +377,14 @@ for security, dont sign in with root account
 sudo is for elevated privileges
 remotely accessible: secure shell (SSH) over TCP port 22
 
+Commands for key gen: 
+* ssh-keygen -t rsa: ssh-keygen is the command to create a ssh key. -t indicates the type of key, and the type, in this example, is RSA. 
+It will generate a private key, and it will prompt for the name of the file, with one by default. It will also ask for a password, but by default, there is no password.
+It will also generate a public key. 
+* ls would not show the key, unless you use the -a flag, which shows hidden files and folders.
+* ssh-copy-id: copies the ssh publick key into the authorized keys file. 
+* mount: mounts a subdirectory to either a disk or remotely. 
+
 ### Windows Command Line
 
 cmd.exe
@@ -393,9 +401,64 @@ uses libraries/modules that dictate available commands
 
 ## Network scanners
 
-### Nmap
+Attackers use this for reconnaissance
+Very loud on the network (easily detected)
+scan network nodes and shows: 
+* ip address
+* mac address
+* operating system
+* open ports
+recommended periodic network scans to identify differences (rogue systems, new listening ports, etc.)
+most common network scanner: 
+nmap
 
 ## Network protocol analyzers
+
+Capture network traffic.
+* depends on network placement
+* hardware or software level
+* network switch port analyzer (SPAN) copies all VLAN traffic to one switch port
+* wired and wireless capturing
+* captures can be saved
+* packets are easily forged with free tools such as hping3
+
+## Log Files
+
+Used for network, host, and device monitoring. 
+Potential indicators of compromise (IoC)
+Must ensure log files are secure. forward log entries to a centralized logging host, in case the system gets compromised, the logs are not. 
+
+### Log Tools
+
+Windows: event viewer, powershell
+Linux: /var/log, logger, jorunalctl
+
+### Centralized logging
+
+* Simple Network Management Protocol (SNMP): bandwidth monitoring, software agent or built into firmware, snmp traps notify snmp management stations
+
+#### Linux Centralized Logging 
+
+Syslog / rsyslog
+normally uses UDP port 5l4
+filter trafic that gets sent 
+
+#### Windows Centralized Logging 
+
+Event viewer subscriptions: send local log data to a collector server over the WinRM protocol 
+
+### Security Information and Event Management (SIEM)
+
+Sensors / collectors: logs, intrusion detection / prevention system, packet captures, antivirus
+Enterprise-level centralized log ingestion service
+Dashboard visualizations: alerts, packet captures, malware alerts, etc. identify trends and correlation
+
+#### SIEM process
+
+* data inputs
+* log aggregation
+* analysis 
+* review reports
 
 # Securing individual systems 
 
