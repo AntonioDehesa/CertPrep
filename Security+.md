@@ -1,3 +1,5 @@
+Course: 
+TOTAL: CompTIA Security+ Certification Course by Total Seminars
 # Risk Management
 
 ## Business Risk
@@ -443,6 +445,12 @@ Syslog / rsyslog
 normally uses UDP port 5l4
 filter trafic that gets sent 
 
+#### Linux log forwarding
+
+* modify /etc/rsyslog.conf to enable module(load="imudp") and input(type="imudp" port="514"). you can change the port number. this will enable the linux system to listen for logs (UDP)
+* sudo service rsyslog restart: restarts the rsyslog service to accept the recent changes. 
+* to send the logs, you need to modify the same file in the other system with a line including the logs you want to send (*.* to send everything) and a @{ip_address} to the direction you want to send them.
+
 #### Windows Centralized Logging 
 
 Event viewer subscriptions: send local log data to a collector server over the WinRM protocol 
@@ -460,7 +468,255 @@ Dashboard visualizations: alerts, packet captures, malware alerts, etc. identify
 * analysis 
 * review reports
 
+## Cybersecurity Benchmark tools 
+
+* benchmarking: taking times / results in order to compare to the industry standard to see where you fit, to verify if your system is healthy or not. 
+Industry leading security configuration standards. 
+Define minimum level of security to meet standards or regulatory requirements. 
+In the US: National Institute of Standards and Technology (NIST)
+technical guidelines for federal agencies and other organizations.
+
+NIST lifecycle: 
+* identify: 
+* protect: 
+* detect: 
+* respond: 
+* recover: 
+
+### CIS
+
+Center for Internet Security 
+Best practices for securely configuring a system. 
+
+### DoD Cyber Exchange STIGs
+From the US deparment of defense. 
+Security technical implementation guides (STIGs)
+
+### Security Content Automation Protocol (SCAP)
+
+Collection of standards. 
+Maintain the security of systems by automatically finding vulnerabilities in real-time. 
+
+### Benchmark types
+
+#### Agent-based
+
+Software installed on devices to monitor and protect them. 
+Continuous surveillance and action. 
+Identify and handle security threats. 
+Ensure organizational security policy compliance. 
+
+#### Agentless
+
+Dont require software on each device. 
+Less intrusive.
+Less impact on system performance. 
+Rely on network connections. 
+Can scan for vulnerabilities without direct system access. 
+
 # Securing individual systems 
+
+## Malware 
+
+Software that is detrimental to the operation of a host. 
+First example of this is a virus. 
+
+### Virus
+
+Pre-date the internet.
+Program that can replicate only through definite user interaction. 
+Activates once a user clicks or downloads. 
+Fileless malware/virus: no file, lives only in memory. Difficult for anti-malware to detect. 
+
+### Ransomware
+
+Cryptomalware / cryptoransomware: uses encryption to lock a user out of a system.
+Attacker hides your data until you pay a ransom. 
+
+### Worm
+
+Virus that, once started, replicates itself. 
+More like a pathway for replication. 
+Most of the malware that is seen nowadays.
+
+### Trojan horse
+
+A program that looks benign, but in fact hides a nefarious prrogram inside it. 
+No replication by themselves. 
+Remote access trojan (RAT): Maliciously takes control of a system remotely. 
+
+### Backdoor
+
+Not necessarily nefarious.
+Created by developers as easy maintenances entry point. 
+Can be exploited by attackers if left open by developers. 
+Can be created in a program by hackers to gain access. 
+
+### Potentially Unwanted Programs (PUPs)
+
+Software that may have negative or undesirable effects. 
+Crapware, adware, spyware, bloatware. 
+
+### Bots / botnets
+
+Distributed attack using remotely controlled malware controlling several computers, often running some kind of RAT. 
+Hosts are called bots or zombies. 
+One kind of botnet attack is a DDoS attack: Overload of traffic that makes resources unavailable for legitimate users. 
+Command and control (C2 / C&C): Protocols that automate the control, not requiring human interaction after the initial programming. 
+
+### Keylogger
+
+Hardware: Device that plugs in between keyboard and computer to log keystrokes. Many have WAPs built in for remote access. 
+Software: Program that logs keystrokes. Most anti-malware can find nefarious software keyloggers. 
+
+### Rootkit
+
+Can often be somewhat invisible.
+Goal is to get root access to a system. 
+Usually installed on the boot of the systems they are attacking. 
+
+### Logic Bomb
+
+Often a script set to execute.
+Created with a timer to go off at a specific time or during a specific event on a system. 
+Does not replicate. 
+
+## Weak configurations
+
+### Open permissions: 
+* Open wireless networks
+* Guest user accounts 
+* No intruder lockout settings (failed login limits)
+* Too many file or app permissions 
+
+### Linux root account: 
+* dont sign in with root account 
+* use sudo to run privileged commands 
+* Disallow remote access as root 
+* use su to temporarily switch to root 
+
+### Insecure cryptographic solutions 
+
+Wi-fi wired equivalent privacy (WEP): Use WPA2 or WPA3
+Digital Encryption Standard (DES): Use AES 
+Secure Sockets Layer (SSL): Use TLS
+Transport Layer Security: Secure after versions 1.2
+
+### Change default settings 
+
+IP address 
+Open port numbers 
+web server root filesystem location: directory traversal attacks 
+username and password policies 
+
+### On-premises
+
+### Cloud solutions 
+
+## Common attacks 
+
+### 0-day attack
+Vulnerability found by a researcher or attacker that is unknown by the vendor and the public. 
+Zero day initiative: Encourages the private reporting of vulnerabilities to vendors. 
+
+### DNS sinkholing
+
+Return false DNS query results 
+
+### Privilege escalation
+
+Attacker acquires a higher level of access: Compromising an admin account that has a weak password. 
+
+### Replay attack
+
+Attacker intercepts and later retransmits or uses sensitive data. 
+
+### Pointer / object dereference
+
+Attacker manipulates memory pointers to point to unexpected memory locations. 
+Normally causes software to crash (DoS attack).
+
+### Error handling 
+
+Improper handling can crash a system. 
+Disclosure of too much information. 
+
+### Dynamic Link Library (DLL) Injection
+
+Attacker places malicious DLL in the file system. 
+Legitimate running processes call malicious code within the DLL. 
+
+### Resource exhaustion
+
+Dos or DDoS
+Memory leaks. 
+
+### Race conditions 
+
+Code runtime phenomenon
+Action that might occur before security controls is in effect 
+Based on timing
+
+### Overflow attacks
+
+* Memory injections 
+* Buffer overflow
+
+### Password attacks 
+
+Online vs offline
+
+Tools: 
+* john the ripper
+* cain and abel 
+* hydra 
+
+Dictionary: 
+* uses common username / password files 
+* tries thousands or millions of likely possibilities to login to a user account 
+
+* Brute force: try every possible combination of characters. Multiple attempts should trigger an account lockout.
+* Password Spraying: Blast many accounts with a best-guess common password before trying a new password. Slower (per user account) than traditional attacks, but less likely to trigger account lockouts. 
+
+## Bots and botnets 
+
+### Bot
+
+Single infected device under attacker control. AKA Zombie 
+Periodically talks to command and control (C2 / C&C) attacker server. 
+Mitigate with IDS 
+Attacker might have directions stored in a DNS TXT record.
+Network IDS might detect this. 
+
+### Botnet
+
+Collection of infected devices under attacker control
+
+## Disk RAID levels 
+
+Redundant array of inexpensive disks 
+Groups disks together to work as one, for better performance and high data availability. 
+Hardware level and software level (slower and less reliable than hardware RAID)
+
+### Storage Area Network (SAN)
+
+Storage distributed on a network. 
+
+### RAID levels 
+
+* RAID 0: Disk striping: data is broken into stripes and each stripe is written to a separate disk in the array. Lose one disk, lose everything. Great for performance, but terrible for availability
+* RAID 1: Disk mirroring: Data is entirely written to two separate disks. good for performance and availability
+* RAID 5: Disk striping with distributed parity. Data stripes and the related parity are stored on separate disks. Very good for availability but not so good for performance.
+* RAID 6: requires at least 4 disks. stores 2 parity stripes on each disk. can tolerate failure of 2 disks. 
+* RAID 10: RAID level 1, then 0. Disk mirroring, then striping. Requires at least 4 disks. 
+
+## Securing hardware 
+
+## Securing endpoints 
+
+## Securing data with encryption
+
+
 
 # Securing the basic LAN
 
