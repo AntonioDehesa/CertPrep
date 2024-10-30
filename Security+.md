@@ -712,13 +712,127 @@ Storage distributed on a network.
 
 ## Securing hardware 
 
+Limit physical access: Alarms, sensors, locks. Potential attacks: Card / RFID cloning or skimming. 
+Use vendor / technology diversity: firewalls, repeaters, etc. 
+Limit USB storage device use. 
+Encrypt storage devices. 
+
+Apply firmware patches 
+Use USB data blocker: 
+* mitigate infection via USB port: Prevents data transfer from other devices. USB ninja cables are cables that have infecting capabilities themselves in their firmware. 
+* Allows recharging but not data transfer 
+
+### Trusted Platform Module 
+
+Used as basis for hardware root of trust. 
+Boot integrity: 
+* UEFI secure boot 
+* Measured boot 
+* Boot attestation 
+
+Disk volume encryption 
+* Microsoft BitLocker 
+
+### Failed machine boot 
+
+Causes: 
+* File corruption 
+* Malware 
+* failing disks 
+* misconfiguration
+
+Remediation: 
+* Boot from alternative media 
+- Live boot media 
+- be sure to require password
+- Revert to known state or last known-good configuration 
+
+### Hardware redundancy
+
+RAID 
+NIC teaming 
+UPS
+Power distribution unit (PDU)
+Dual power supplies 
+
+### Cloud redundancy 
+
+network connection to the cloud 
+load balancing 
+cross-region storage replication 
+
 ## Securing endpoints 
+
+### Antivirus / Anti-malware 
+
+Endpoint detection and response (EDR)
+* Alarms for detected anomalies or malware infections 
+* Shows up in central SIEM console
+
+Host-based firewalls
+
+### Host intrusion detection system (HIDS)
+
+Looks for suspicious activity 
+Analyzes host activity/logs
+Detects and alerts on anomalies 
+* write to log 
+* send notifications: email, sms, siem console 
+
+### Next generation firewall (NGFW)
+
+Packet filtering firewall: Up to OSI layer 4
+Deep packet inspection firewall: Up to OSI layer 7
+Intrusion detection 
+Intrusion prevention 
+
+### Allow lists 
+
+Also called whitelist 
+Lists only allowed 
+Can be circumvented with DLL Injection attacks 
+Can prevent users from: 
+* installing and running malware 
+* making windows registry changes 
 
 ## Securing data with encryption
 
+### Types of encryption
+* full disk 
+* partitions 
+* files 
+* volumes
+* databases
+* records 
 
+Full disk encryption (FDE): ensures all data on a drive is encrypted.
+Partition encryption: encrypts individual partitions (sections) of a drive. Can have some encrypted and some unencrypted
+File encryption: Encrypts individual files. protects specific sensitive files
+Volume encryptions: Encrypts an entire volume (logical data unit) of a drive . Can be done on a drive, external drive, or virtual drive. 
+Database encryption: encrypts an entire database. protects the whole collection of data in the database. 
+record encryption: encrypts individual entries in a database. records are a single set of data in a database, like a row in the table. 
 
 # Securing the basic LAN
+
+## Data protection 
+
+
+
+## Cryptographic methods 
+
+## Symmetric Cryptosystems 
+
+## Symmetric Block Modes 
+
+## Asymmetric Cryptosystems 
+
+## Understanding Digital certificates 
+
+### Trust models 
+
+### Public key infrastructure
+
+### Certificate Types
 
 # Securing Wireless LANs
 
